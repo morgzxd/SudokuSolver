@@ -1,4 +1,4 @@
-from board import easyboard, fullboard
+from board import easyboard, fullboard, easyboard2
 
 class Sudoku:
   def __init__(self, boardText=None):
@@ -69,25 +69,18 @@ class Sudoku:
     return True
 
   def solve(self):
-#  while not self.check_solve(): #new sentace
-    changes = False
-    for j in range(9):
-      for i in range(9):
-        if self.board[j][i] == None:
-          a = self.poss(j,i)
-          if len(a) == 1:
-            self.board[j][i] = a.pop() #check if works
-            changes = True
-    if not changes:
-      return self.board
-      
+    while not self.check_solve():
+      for j in range(9):
+        for i in range(9):
+          if self.board[j][i] == None:
+            a = self.poss(j,i)
+            if len(a) == 1:
+              self.board[j][i] = a.pop()
+    return self.board
 
 def main():
-  board = Sudoku(fullboard)
-  board2 = Sudoku(easyboard)
-  board2.solve()
-  board.solve()
-  print(board2)
-
+  board3 = Sudoku(easyboard2)
+  board3.solve()
+  print(board3)
 
 main()
