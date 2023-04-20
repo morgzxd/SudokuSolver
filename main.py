@@ -80,6 +80,7 @@ class Sudoku:
             changes = True
     if not changes:
       return self.board
+      
 
 def main():
   board = Sudoku(fullboard)
